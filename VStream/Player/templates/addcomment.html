@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'player.html' %}
+<html>
+  {% load static %}
+  <head>
+    <link rel="stylesheet" href="{% static 'player.css' %}" />
+  </head>
+  {% block addcomment %}
+  <div class="newComment">
+    <h2>Añadir comentario</h2>
+    <form action="/savecomment/{{currentVideo.id}}" method="post">
+      {% csrf_token %}
+      <h3>Escribe tu comentario:</h3>
+      <textarea
+        name="comment"
+        cols="100"
+        rows="5"
+        placeholder="Comentario"
+      ></textarea>
+      <br />
+      <input type="submit" value="Publicar" />
+    </form>
+  </div>
+  {% endblock %}
+</html>

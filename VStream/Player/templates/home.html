@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+  </head>
+  <body>
+    {% include 'topbar.html' %}
+    <h1>Videos</h1>
+    <div>
+      {% for v in videos %}
+      <div>
+          <img
+            src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
+            alt=""
+            width="20%"
+          />
+          <a href="player/{{v.id}}">{{v.title}}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
