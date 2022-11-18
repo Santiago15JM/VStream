@@ -1,7 +1,6 @@
-search results
 <html>
   {% include 'topbar.html' %}
-
+  <h1>Resultados de la busqueda</h1>
   {% if results.count == 0 %}
   <h1>No hay resultados</h1>
   {% else %} {% for r in results %}

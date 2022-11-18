@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Player</title>
     {% load static %}
-    <script src="{% static 'player.js' %}"></script>
     <link rel="stylesheet" href="{% static 'player.css' %}" />
   </head>
 
@@ -47,7 +46,6 @@
     <div class="videosContainer">
       <h2>Videos</h2>
       {% for v in videos %}
-      <!-- <div class="vidPlaceholder" onclick="changeSource('{{v.fileName}}')"> -->
       <div class="vidPlaceholder" onclick="location.href='/player/{{v.id}}'">
         <img
           src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
