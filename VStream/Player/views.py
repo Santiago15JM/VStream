@@ -4,8 +4,7 @@ from .models import Video, Comment
 from django.db.models import Q
 from django.urls import reverse
 
-# Create your views here.
-
+# Clave de los usuarios: contra123
 
 def home(req):
     videos = Video.objects.all()

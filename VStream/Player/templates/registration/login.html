@@ -1,5 +1,18 @@
-<h2>Inicio de sesion</h2>
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Iniciar sesion</button>
-</form>
+<html>
+
+<head>
+  {% load static %}
+  <link type="text/css" rel="stylesheet" href={% static 'materialize.css' %} />
+</head>
+
+<body class="container row">
+  <div class="col s6 offset-s3 center-align">
+  <h2>Inicio de sesion</h2>
+    <form class="card-panel" method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button class="btn blue" type="submit">Iniciar sesion</button>
+    </form>
+  </div>
+</body>
+
+</html>

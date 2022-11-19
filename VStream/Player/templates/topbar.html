@@ -1,14 +1,14 @@
 <div class="navbar-fixed valign-wrapper">
   <nav class="blue darken-3">
-    <div class="container nav-wrapper row">
-      <ul class="valign-wrapper">
+    <div class="container nav-wrapper">
+      <ul class="valign-wrapper row">
         <li><a href="/">Inicio</a></li>
 
-        <li class="right-align">
+        <li class="center-align col s8">
           <form class="valign-wrapper" action="/search/" method="get">
-            <input class="center-align col s8 white-text" style="margin: 0 1rem;" name="search" type="text" placeholder="Buscar video"
+            <input class="center-align white-text" style="margin: 0 1rem;" name="search" type="text" placeholder="Buscar video"
               value="{{search}}" />
-            <button class="waves-effect waves-light btn blue" type="submit">Buscar</button>
+            <button class="waves-effect waves-light btn blue col s2" type="submit">Buscar</button>
           </form>
         </li>
 
@@ -16,7 +16,7 @@
         <li><a>{{ user.username }}</a></li>
         <li><a href="{% url 'logout' %}">Cerrar sesion</a></li>
         {% else %}
-        <li><a href="accounts/login/">Login</a></li>
+        <li><a href="/accounts/login/">Login</a></li>
         {% endif %}
       </ul>
     </div>
