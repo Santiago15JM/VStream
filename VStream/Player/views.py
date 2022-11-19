@@ -1,4 +1,3 @@
-from moviepy.editor import *
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Video, Comment

@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio</title>
-  </head>
-  <body>
-    {% include 'topbar.html' %}
-    <h1>Videos</h1>
-    <div>
-      {% for v in videos %}
-      <div class="vidPlaceholder" onclick="location.href='/player/{{v.id}}'">
-        <img
-          src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
-          alt="video"
-          width="20%"
-        />
-        <h4>{{ v.title }} | {{ v.uploader.username }}</h4>
-      </div>
-      <!-- <div>
-          <img
-            src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
-            alt=""
-            width="20%"
-          />
-          <a href="player/{{v.id}}">{{v.title}}</a>
-      </div> -->
-      {% endfor %}
+{% extends 'main.html'%}
+
+{% block title %}
+<title>Inicio</title>
+{% endblock title %}
+
+{% block content %}
+<h3>Videos</h3>
+<div class="row">
+  {% for v in videos %}
+  <div class="card-panel col s4 center-align hoverable" onclick="location.href='/player/{{v.id}}'">
+    <img
+      src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
+      alt="video" width="90%" />
+    <div class="">
+      <h5>{{ v.title }} </h5>
+      <h6> {{ v.uploader.username }}</h6>
     </div>
-  </body>
-</html>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

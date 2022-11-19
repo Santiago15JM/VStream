@@ -1,62 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video Player</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'player.css' %}" />
-  </head>
+{% extends 'main.html' %}
 
-  <body>
-    {% include 'topbar.html' %}
+{%block title%}
+<title>Video Player</title>
+{% endblock title %}
 
-    <div class="playerContainer">
-      <h2>Reproductor</h2>
-      <video id="player" name="playing" controls width="100%">
-        <source
-          src="../static/videos/{{currentVideo.fileName}}"
-          type="video/mp4"
-        />
-      </video>
-      <h2>{{currentVideo.title}} | {{currentVideo.uploader}}</h2>
 
-      <h2>Comentarios</h2>
-      {% if user.is_authenticated %} {% block addcomment %}
-      <button
-        type="button"
-        onclick="location.href='/addcomment/{{currentVideo.id}}'"
-      >
-        Publicar un comentario
-      </button>
-      {% endblock %} {% else %}
-      <h3>Inicia sesion para poder comentar.</h3>
-      {% endif %}
+{% block content %}
+<div class="playerContainer">
+  <h2>Reproductor</h2>
+  <video id="player" name="playing" controls width="100%">
+    <source src="../static/videos/{{currentVideo.fileName}}" type="video/mp4" />
+  </video>
+  <h2>{{currentVideo.title}} | {{currentVideo.uploader}}</h2>
 
-      <div class="commentsContainer" id="comments">
-        {% for c in comments %}
-        <div class="comment">
-          <h3>{{c.user.username}}:</h3>
-          <p>{{c.comment}}</p>
-        </div>
-        {% endfor %}
-      </div>
+  <h2>Comentarios</h2>
+  {% if user.is_authenticated %} {% block addcomment %}
+  <button type="button" onclick="location.href='/addcomment/{{currentVideo.id}}'">
+    Publicar un comentario
+  </button>
+  {% endblock %} {% else %}
+  <h3>Inicia sesion para poder comentar.</h3>
+  {% endif %}
+
+  <div class="commentsContainer" id="comments">
+    {% for c in comments %}
+    <div class="comment">
+      <h3>{{c.user.username}}:</h3>
+      <p>{{c.comment}}</p>
     </div>
+    {% endfor %}
+  </div>
+</div>
 
-    <div class="videosContainer">
-      <h2>Videos</h2>
-      {% for v in videos %}
-      <div class="vidPlaceholder" onclick="location.href='/player/{{v.id}}'">
-        <img
-          src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
-          alt="video"
-          width="100%"
-        />
-        <h4>{{ v.title }} | {{ v.uploader.username }}</h4>
-      </div>
-      {% endfor %}
-    </div>
+<div class="videosContainer">
+  <h2>Videos</h2>
+  {% for v in videos %}
+  <div class="vidPlaceholder" onclick="location.href='/player/{{v.id}}'">
+    <img
+      src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
+      alt="video" width="100%" />
+    <h4>{{ v.title }} | {{ v.uploader.username }}</h4>
+  </div>
+  {% endfor %}
+</div>
 
-    <h3>{{user}}</h3>
-  </body>
-</html>
+<h3>{{user}}</h3>
+{% endblock content%}

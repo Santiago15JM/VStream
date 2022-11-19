@@ -1,17 +1,27 @@
-<html>
-  {% include 'topbar.html' %}
-  <h1>Resultados de la busqueda</h1>
-  {% if results.count == 0 %}
-  <h1>No hay resultados</h1>
-  {% else %} {% for r in results %}
-  <div class="searchResult" onclick="location.href='/player/{{r.id}}'">
-    <img
-      src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
-      alt="video"
-      width="10%"
-    />
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Resultados de la busqueda</title>
+{% endblock title %}
+
+{% block content %}
+
+<h2>Resultados de la busqueda</h2>
+
+{% if results.count == 0 %}
+<h3>No hay resultados</h3>
+
+{% else %} {% for r in results %}
+<div class="card horizontal hoverable" onclick="location.href='/player/{{r.id}}'">
+  <img
+    src="https://img.freepik.com/vector-gratis/diseno-plantilla-reproductor-video-estilo-blanco-minimo_1017-25481.jpg"
+    alt="video" width="20%" />
+  <div>
     <h4>{{ r.title }}</h4>
-    <h4>{{ r.uploader.username }}</h4>
+    <h5>{{ r.uploader.username }}</h5>
   </div>
-  {% endfor %} {% endif %}
-</html>
+</div>
+
+{% endfor %} {% endif %}
+
+{% endblock content %}

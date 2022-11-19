@@ -1,8 +1,24 @@
-<div>
-  <a href="/">Home</a>
-  {% if user.is_authenticated %}
-  <a href="{% url 'logout' %}">Cerrar sesion</a>
-  {% else %}
-  <a href="accounts/login/">Login</a>
-  {% endif %} {% include 'searchbar.html' %}
+<div class="navbar-fixed valign-wrapper">
+  <nav class="blue darken-3">
+    <div class="container nav-wrapper row">
+      <ul class="valign-wrapper">
+        <li><a href="/">Inicio</a></li>
+
+        <li class="right-align">
+          <form class="valign-wrapper" action="/search/" method="get">
+            <input class="center-align col s8 white-text" style="margin: 0 1rem;" name="search" type="text" placeholder="Buscar video"
+              value="{{search}}" />
+            <button class="waves-effect waves-light btn blue" type="submit">Buscar</button>
+          </form>
+        </li>
+
+        {% if user.is_authenticated %}
+        <li><a>{{ user.username }}</a></li>
+        <li><a href="{% url 'logout' %}">Cerrar sesion</a></li>
+        {% else %}
+        <li><a href="accounts/login/">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
 </div>
